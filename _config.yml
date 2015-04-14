@@ -1,0 +1,22 @@
+# Site settings
+title: Are You There G-d?
+email: hello@paulwrankin.com
+description: |
+  &ldquo;Are You There G-d?&rdquo;
+  Paul W. Rankin
+  2015
+  web and video
+
+  f - toggle fullscreen
+  ? - show this description
+url: "http://areyouthereg-d.com"
+# assets: "/assets/"
+assets: "https://s3.amazonaws.com/pwr-streaming-781fdf54/"
+ga_id: "UA-61824324-3"
+
+# Build settings
+markdown: kramdown
+exclude:
+  - CNAME
+  - Gemfile
+  - Gemfile.lock

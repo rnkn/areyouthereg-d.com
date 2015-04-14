@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+<div class="container">
+    <video id="main" autoplay loop src="{{ site.assets }}are_you_there_god_720p.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="overlay" ondblclick="screenfull.toggle();">
+</div>
+<div id="info" class="overlay" onclick="toggleDisplay('info');" style="display: none;">
+    <pre>{{ site.description }}</pre>
+</div>
