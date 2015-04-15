@@ -1,5 +1,5 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
+#
 ---
 @charset "utf-8";
 
@@ -11,27 +11,30 @@
     $prop: $val;
 }
 
-body {
+html {
     margin: 0;
-    background-color: black;
+    padding: 0;
+    border: 0;
 }
 
-.container {
-    position: relative;
-    height: 100vh;
+body {
+    @extend html;
+    background-color: black;
     overflow: hidden;
 }
 
-.overlay {
-    width: 100%;
-    height: 100%;
+main {
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
 }
 
-video {
+canvas {
     @include prefix(transform, translateX(-50%) translateY(-50%));
+    display: block;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -41,16 +44,30 @@ video {
     height: auto;
 }
 
-#info {
+video {
+    display: none;
+}
+
+figure {
+    @include prefix(transform, translateX(-50%) translateY(-50%));
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 30%;
+    max-width: 90%;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background: white;
     pre {
-        @include prefix(transform, translateX(-50%) translateY(-50%));
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        min-width: 30%;
-        max-width: 90%;
-        width: auto;
-        height: auto;
-        background: white;
+        margin: 0;
+        padding: 0;
     }
+}
+
+#info {
+    @extend main;
+    display: none;
 }

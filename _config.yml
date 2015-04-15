@@ -9,10 +9,10 @@ description: |
 
   f - fullscreen
   ? - show this description
-url: "http://areyouthereg-d.com"
-# assets: "/assets/"
-assets: "https://s3.amazonaws.com/pwr-streaming-781fdf54/"
-ga_id: "UA-61824324-3"
+url: http://areyouthereg-d.com
+# assets: /assets/
+assets: https://s3.amazonaws.com/pwr-streaming-781fdf54/
+ga_id: UA-61824324-3
 
 # Build settings
 markdown: kramdown
