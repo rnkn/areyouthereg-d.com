@@ -1,21 +1,20 @@
 ---
 #
 ---
-document.addEventListener("DOMContentLoaded", function() {
-    var video = document.getElementsByTagName("video")[0];
+var birth = Date.parse("Tue Apr 14 15:59:17 2015 +1000");
 
+document.addEventListener("DOMContentLoaded", function() {
     var canvas = document.getElementsByTagName("canvas")[0];
     var context = canvas.getContext("2d");
-    var canvasW = {{ site.canvas.width }};
-    var canvasH = {{ site.canvas.height }};
-    canvas.width = canvasW;
-    canvas.height = canvasH;
+
+    var video = document.createElement("video");
+    video.src = "{{ site.assets }}are_you_there_god_720p.mp4";
+    video.autoplay = true;
+    video.loop = true;
+    video.currentTime = (Date.now() - birth) / 1000 % video.duration;
+    // video.addEventListener("playing", syncPlayback(this), false);
 
     var info = document.getElementById("info");
-
-    video.addEventListener("canplay", function() {
-        this.play();
-    }, false);
 
     canvas.addEventListener("dblclick", function() {
         screenfull.toggle();
