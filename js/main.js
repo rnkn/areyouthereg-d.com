@@ -9,10 +9,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var video = document.createElement("video");
     video.src = "{{ site.assets }}are_you_there_god_720p.mp4";
-    video.autoplay = true;
     video.loop = true;
-    video.currentTime = (Date.now() - birth) / 1000 % video.duration;
-    // video.addEventListener("playing", syncPlayback(this), false);
+    video.autoplay = true;
+    video.addEventListener("loadedmetadata", function() {
+        syncPlayback(video);
+    }, false);
+    video.addEventListener("canplaythrough", function() {
+        video.play();
+        setInterval(drawCanvas, 40, video, canvas, context);
+    }, false);
 
     var info = document.getElementById("info");
 
@@ -23,14 +28,17 @@ document.addEventListener("DOMContentLoaded", function() {
     info.addEventListener("click", function() {
         toggleDisplay("info");
     }, false);
-
-    drawCanvas(video, canvas, context);
 }, false);
 
-function drawCanvas(image, canvas, context) {
+function syncPlayback(video) {
+    t = Date.now();
+    video.currentTime = (t - birth) / 1000 % video.duration;
+}
+
+function drawCanvas(video, canvas, context) {
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
-    var sRatio = image.videoWidth / image.videoHeight;
+    var sRatio = video.videoWidth / video.videoHeight;
     var dWidth = canvas.width;
     var dHeight = canvas.height;
     var dRatio =  dWidth / dHeight;
@@ -46,12 +54,7 @@ function drawCanvas(image, canvas, context) {
         dY = 0 - (dHeight - canvas.height) / 2;
     }
 
-    context.drawImage(image, dX, dY, dWidth, dHeight);
-    setTimeout(drawCanvas, 40, image, canvas, context);
-}
-
-function syncPlayback(video) {
-    video.currentTime = (Date.now() - birth) / 1000 % video.duration;
+    context.drawImage(video, dX, dY, dWidth, dHeight);
 }
 
 function toggleDisplay(id) {
