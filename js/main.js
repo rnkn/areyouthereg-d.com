@@ -25,12 +25,34 @@ document.addEventListener("DOMContentLoaded", function() {
         toggleDisplay("info");
     }, false);
 
-    drawCanvas(video, context, canvasW, canvasH);
+    drawCanvas(video, canvas, context);
 }, false);
 
-function drawCanvas(source, context, width, height) {
-    context.drawImage(source, 0, 0, width, height);
-    setTimeout(drawCanvas, 40, source, context, width, height);
+function drawCanvas(image, canvas, context) {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+    var sRatio = image.videoWidth / image.videoHeight;
+    var dWidth = canvas.width;
+    var dHeight = canvas.height;
+    var dRatio =  dWidth / dHeight;
+    var dX = 0;
+    var dY = 0;
+
+    if(dRatio < sRatio) {
+        dWidth = dHeight * sRatio;
+        dX = 0 - (dWidth - canvas.width) / 2;
+    }
+    else {
+        dHeight = dWidth / sRatio;
+        dY = 0 - (dHeight - canvas.height) / 2;
+    }
+
+    context.drawImage(image, dX, dY, dWidth, dHeight);
+    setTimeout(drawCanvas, 40, image, canvas, context);
+}
+
+function syncPlayback(video) {
+    video.currentTime = (Date.now() - birth) / 1000 % video.duration;
 }
 
 function toggleDisplay(id) {
