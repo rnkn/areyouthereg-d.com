@@ -58,6 +58,33 @@ figure {
     }
 }
 
+@-webkit-keyframes spinner {
+    from { background-position: 0px; }
+    to { background-position: -500px; }
+}
+
+@-moz-keyframes spinner {
+    from { background-position: 0px 0px; }
+    to { background-position: -500px; }
+}
+
+@keyframes spinner {
+    from { background-position: 0px; }
+    to { background-position: -500px; }
+}
+
+.spinner {
+    @include prefix(transform, translateX(-50%) translateY(-50%));
+    @include prefix(animation, spinner 2s steps(20, end) infinite);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    background-image: url("{{ site.assets }}spinner.png");
+    background-size: 1900% 100%;
+}
+
 #info {
     display: none;
     position: absolute;
