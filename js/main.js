@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var context = canvas.getContext("2d");
 
     var video = document.createElement("video");
-    video.src = "{{ site.assets }}are_you_there_god_720p.mp4";
+    video.src = "{{ site.assets }}are_you_there_god.mp4";
     video.loop = true;
     video.addEventListener("loadedmetadata", function() {
         syncPlayback(video);
