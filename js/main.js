@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
     var video = document.createElement("video");
     video.src = "{{ site.assets }}are_you_there_god_720p.mp4";
     video.loop = true;
-    video.autoplay = true;
     video.addEventListener("loadedmetadata", function() {
         syncPlayback(video);
     }, false);
