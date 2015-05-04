@@ -1,8 +1,6 @@
 ---
 #
 ---
-var birth = Date.parse("Tue Apr 14 15:59:17 2015 +1000");
-
 document.addEventListener("DOMContentLoaded", function() {
     var spinner = document.getElementsByClassName("spinner")[0];
 
@@ -12,12 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
     var video = document.createElement("video");
     video.src = "{{ site.assets }}are_you_there_god.mp4";
     video.loop = true;
-    video.addEventListener("loadedmetadata", function() {
-        syncPlayback(video);
-    }, false);
-    video.addEventListener("canplaythrough", function() {
+    video.autoplay = true;
+    video.addEventListener("play", function() {
         spinner.style.display = "none";
-        video.play();
         setInterval(drawCanvas, 40, video, canvas, context);
     }, false);
 
@@ -31,11 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
         toggleDisplay("info");
     }, false);
 }, false);
-
-function syncPlayback(video) {
-    t = Date.now();
-    video.currentTime = (t - birth) / 1000 % video.duration;
-}
 
 function drawCanvas(video, canvas, context) {
     canvas.width = canvas.clientWidth;
