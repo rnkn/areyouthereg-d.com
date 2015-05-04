@@ -4,6 +4,8 @@
 var birth = Date.parse("Tue Apr 14 15:59:17 2015 +1000");
 
 document.addEventListener("DOMContentLoaded", function() {
+    var spinner = document.getElementsByClassName("spinner")[0];
+
     var canvas = document.getElementsByTagName("canvas")[0];
     var context = canvas.getContext("2d");
 
@@ -14,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
         syncPlayback(video);
     }, false);
     video.addEventListener("canplaythrough", function() {
+        spinner.style.display = "none";
         video.play();
         setInterval(drawCanvas, 40, video, canvas, context);
     }, false);
