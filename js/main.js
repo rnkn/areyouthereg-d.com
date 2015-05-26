@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var context = canvas.getContext("2d");
 
     var video = document.createElement("video");
-    video.src = "{{ site.assets }}are_you_there_god.mp4";
+    video.src = "{{ 'are_you_there_god.mp4' | prepend: site.assets }}";
     video.loop = true;
     video.autoplay = true;
     video.addEventListener("play", function() {
