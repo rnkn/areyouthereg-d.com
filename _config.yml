@@ -15,7 +15,6 @@ assets: https://s3.amazonaws.com/pwr1-areyoutheregod-c1c48b41/
 ga_id: UA-61824324-3
 
 # Build settings
-markdown: kramdown
 exclude:
   - CNAME
   - Gemfile
