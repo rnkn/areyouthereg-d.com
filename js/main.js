@@ -1,6 +1,6 @@
----
-#
----
+import * as keys from "mousetrap";
+import * as fullscreen from "screenfull";
+
 document.addEventListener("DOMContentLoaded", function() {
     var spinner = document.getElementsByClassName("spinner")[0];
 
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var context = canvas.getContext("2d");
 
     var video = document.createElement("video");
-    video.src = "{{ 'are_you_there_god.mp4' | prepend: site.assets }}";
+    video.src = "/assets/are_you_there_god.mp4";
     video.loop = true;
     video.autoplay = true;
     video.addEventListener("play", function() {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var info = document.getElementById("info");
 
     canvas.addEventListener("dblclick", function() {
-        screenfull.toggle();
+        fullscreen.toggle();
     }, false);
 
     info.addEventListener("click", function() {
@@ -59,5 +59,5 @@ function toggleDisplay(id) {
     }
 }
 
-Mousetrap.bind("?", function() { toggleDisplay("info"); });
-Mousetrap.bind("f", function() { screenfull.toggle(); });
+keys.bind("?", function() { toggleDisplay("info"); });
+keys.bind("f", function() { fullscreen.toggle(); });

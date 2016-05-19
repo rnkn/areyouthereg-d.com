@@ -20,4 +20,4 @@ exclude:
   - /README.md
   - /Gemfile
   - /Gemfile.lock
-  - /js/main.js
+
