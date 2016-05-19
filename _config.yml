@@ -10,12 +10,14 @@ description: |
   f - fullscreen
   ? - show this description
 url: http://areyouthereg-d.com
-# assets: /assets/
-assets: http://cdn.areyouthereg-d.com/
+# assets: assets/
+assets: //d20zpp1g2yzp8j.cloudfront.net/
 ga_id: UA-61824324-3
 
 # Build settings
 exclude:
-  - CNAME
-  - Gemfile
-  - Gemfile.lock
+  - /CNAME
+  - /README.md
+  - /Gemfile
+  - /Gemfile.lock
+  - /js/main.js
